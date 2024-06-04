@@ -20,7 +20,6 @@ const getObjectFromS3 = async ({ Bucket, Key }) => {
   const command = new GetObjectCommand({ Bucket, Key: directoryPath });
   try {
     const response = await client.send(command);
-    // The Body object also has 'transformToByteArray' and 'transformToWebStream' methods.
     return await response.Body.transformToString();
   } catch (err) {
     console.error(err);
@@ -28,8 +27,6 @@ const getObjectFromS3 = async ({ Bucket, Key }) => {
 };
 
 exports.handler = async function (event, context) {
-  // console.log("INDEX EXPORT HANDLER", event);
-
   try {
     const eRecord = event.Records && event.Records[0],
       inputBucket = eRecord.s3.bucket.name,
@@ -37,10 +34,10 @@ exports.handler = async function (event, context) {
 
     const s3Result = await getObjectFromS3({ Bucket: inputBucket, Key: key });
     const s3Data = JSON.parse(s3Result);
-
+    const folder = path.dirname(key).split("/")[2];
     const TranscriptionJobName = s3Data.questionId + "_" + Date.now();
     const MediaFileUri = `https://${inputBucket}.s3.amazonaws.com/${key}`;
-    const OutputKey = `${NodeEnv}/output-json/${TranscriptionJobName}.json`;
+    const OutputKey = `${NodeEnv}/output-json/${folder}/${TranscriptionJobName}.json`;
 
     const params = {
       TranscriptionJobName,
@@ -59,8 +56,7 @@ exports.handler = async function (event, context) {
     if(data) console.log('transcribed sucessfully');
     return { statusCode: 200, body: data };
   } catch (err) {
-    console.log(error);
-
+    console.log(err);
     return { statusCode: 400, body: err };
   }
 };
