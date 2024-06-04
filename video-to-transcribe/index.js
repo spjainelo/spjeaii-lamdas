@@ -33,9 +33,9 @@ exports.handler = async function (event, context) {
       key = eRecord.s3.object.key;
 
     const s3Result = await getObjectFromS3({ Bucket: inputBucket, Key: key });
-    const s3Data = JSON.parse(s3Result);
+    const { questionId, answerId } = JSON.parse(s3Result);
     const folder = path.dirname(key).split("/")[2];
-    const TranscriptionJobName = s3Data.questionId + "_" + Date.now();
+    const TranscriptionJobName = questionId + "_" + answerId + "_" + Date.now();
     const MediaFileUri = `https://${inputBucket}.s3.amazonaws.com/${key}`;
     const OutputKey = `${NodeEnv}/output-json/${folder}/${TranscriptionJobName}.json`;
 

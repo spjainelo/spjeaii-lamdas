@@ -29,7 +29,7 @@ const event = {
                     "arn": "arn:aws:s3:::spjeaii-assets"
                 },
                 "object": {
-                    "key": "development/recordings/a511b33ec922445b9294d17070c644ed/demo.mp4",
+                    "key": "development/recordings/0a08621de5844c12ac5a509223b9d108/3994e942d44444e64073dda6bddfd0b3_6659ec7c29b7de10389f019c_0.mp4",
                     "size": 189070,
                     "eTag": "b229d3a99565f5b9d3cc31524539c9ca",
                     "sequencer": "00665EA434767B0F86"
