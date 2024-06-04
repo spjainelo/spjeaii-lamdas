@@ -1,3 +1,4 @@
 video-to-transcribe/node_modules
 video-to-transcribe/build
 video-to-transcribe/lambda-layer
+video-to-transcribe/.env
