@@ -45,9 +45,15 @@ exports.handler = async function (event, context) {
             }
 
             const response = await axios.patch(`${apiUrl}/answers/${answerId}`, payload, config)
-            console.log(response);
+            console.log('Axios Response: ', response.data);
         } catch (e) {
             console.error('Axios Error: ', e)
         }
     }
+
+    return {
+        statusCode: 200,
+        body: JSON.stringify('Hello from Lambda!'),
+      };
+    
 }
