@@ -1,43 +1,38 @@
-require('dotenv').config();
+require("dotenv").config();
 
 const event = {
-    "Records": [
-        {
-            "eventVersion": "2.1",
-            "eventSource": "aws:s3",
-            "awsRegion": "us-east-1",
-            "eventTime": "2024-06-04T05:20:52.576Z",
-            "eventName": "ObjectCreated:Put",
-            "userIdentity": {
-                "principalId": "AWS:AIDAVDHVW3PS5MM4VAROO"
-            },
-            "requestParameters": {
-                "sourceIPAddress": "103.121.26.34"
-            },
-            "responseElements": {
-                "x-amz-request-id": "9RFZSGJV4AJ72NSQ",
-                "x-amz-id-2": "flc0R+pVMbhSp7f2GXNEJNPBT4NVUSn3MsrWpDr5GzlRWyepfU764zl4VvS8lbEEvMjpyrKfMXgKknXYZDss2ZvtCbfa85FI"
-            },
-            "s3": {
-                "s3SchemaVersion": "1.0",
-                "configurationId": "27222762-a461-4ddd-9fc2-f862e9f34f5e",
-                "bucket": {
-                    "name": "spjeaii-assets",
-                    "ownerIdentity": {
-                        "principalId": "ABA1KYRDC3ZPH"
-                    },
-                    "arn": "arn:aws:s3:::spjeaii-assets"
-                },
-                "object": {
-                    "key": "development/recordings/0a08621de5844c12ac5a509223b9d108/3994e942d44444e64073dda6bddfd0b3_6659ec7c29b7de10389f019c_0.mp4",
-                    "size": 189070,
-                    "eTag": "b229d3a99565f5b9d3cc31524539c9ca",
-                    "sequencer": "00665EA434767B0F86"
-                }
-            }
-        }
-    ]
-}
+  Records: [
+    {
+      eventVersion: "2.1",
+      eventSource: "aws:s3",
+      awsRegion: "us-east-1",
+      eventTime: "2024-06-04T05:20:52.576Z",
+      eventName: "ObjectCreated:Put",
+      userIdentity: { principalId: "AWS:AIDAVDHVW3PS5MM4VAROO" },
+      requestParameters: { sourceIPAddress: "103.121.26.34" },
+      responseElements: {
+        "x-amz-request-id": "9RFZSGJV4AJ72NSQ",
+        "x-amz-id-2":
+          "flc0R+pVMbhSp7f2GXNEJNPBT4NVUSn3MsrWpDr5GzlRWyepfU764zl4VvS8lbEEvMjpyrKfMXgKknXYZDss2ZvtCbfa85FI",
+      },
+      s3: {
+        s3SchemaVersion: "1.0",
+        configurationId: "27222762-a461-4ddd-9fc2-f862e9f34f5e",
+        bucket: {
+          name: "spjeaii-assets",
+          ownerIdentity: { principalId: "ABA1KYRDC3ZPH" },
+          arn: "arn:aws:s3:::spjeaii-assets",
+        },
+        object: {
+          key: "development/recordings/c2d40ec240774795a6081c0d9d2ea542/618e8a53f743f1fe8103b8b93e6af01f_6659ec7c29b7de10389f019c_0.mp4",
+          size: 189070,
+          eTag: "b229d3a99565f5b9d3cc31524539c9ca",
+          sequencer: "00665EA434767B0F86",
+        },
+      },
+    },
+  ],
+};
 
 // Import ENV's
 process.env.AWS_BUCKET_URL;
@@ -46,6 +41,6 @@ process.env.AWS_BUCKET;
 process.env.AWS_DEFAULT_REGION;
 process.env.LANGUAGE_CODE;
 
-const { handler } = require('./index');
+const { handler } = require("./index");
 
 handler(event);
